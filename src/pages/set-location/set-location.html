@@ -14,7 +14,13 @@
         <agm-map
         [latitude]="location.lat"
         [longitude]="location.lng"
-        [zoom]="16"></agm-map>
+        [zoom]="16"
+        (mapClick)="onSetMarker($event)">
+          <agm-marker
+          [latitude]="marker.lat"
+          [longitude]="marker.lng"
+          *ngIf="marker"></agm-marker>
+        </agm-map>
       </ion-col>
     </ion-row>
   </ion-grid>
