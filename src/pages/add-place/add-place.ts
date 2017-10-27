@@ -21,6 +21,7 @@ export class AddPlacePage {
         lng: -73.9759827
     };
     public locationIsSet:boolean = false;
+    public imageUrl:string = '';
     
     constructor (private modalController:ModalController,
                  private geolocation:Geolocation,
@@ -68,7 +69,7 @@ export class AddPlacePage {
             correctOrientation: true
         })
         .then(imageData => {
-            console.log(imageData)
+            this.imageUrl = imageData;
         })
         .catch(err => {
             console.log(err);
