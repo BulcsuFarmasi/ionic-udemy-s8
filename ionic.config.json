@@ -2,5 +2,7 @@
   "name": "section-8-awesome-places",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
