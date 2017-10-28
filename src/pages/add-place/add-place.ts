@@ -10,6 +10,8 @@ import { Location } from '../../models/location';
 
 import { SetLocationPage } from '../set-location/set-location';
 
+import { PlacesService } from '../../services/places';
+
 @Component({
   selector: 'page-add-place',
   templateUrl: 'add-place.html',
@@ -27,7 +29,8 @@ export class AddPlacePage {
                  private geolocation:Geolocation,
                  private loadingController:LoadingController,
                  private toastController:ToastController,
-                 private camera:Camera) {}
+                 private camera:Camera,
+                 private placesService:PlacesService) {}
 
     onLocate () {
         const loader = this.loadingController.create({
@@ -77,6 +80,14 @@ export class AddPlacePage {
     }
 
     onSubmit(form: NgForm) {
-      console.log(form.value);
+      this.placesService.addPlace(form.value.title, form.value.description,
+                                  this.location, this.imageUrl);
+      form.reset();
+      this.location = {
+          lat: 40.7624324,
+          lng: -73.9759827
+      };
+      this.imageUrl = '';
+      this.locationIsSet = false;
     }
 }
