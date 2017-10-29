@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { LoadingController, ModalController, ToastController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
-import { File, FileEntry, FileError } from '@ionic-native/file';
+import { File, Entry, FileError } from '@ionic-native/file';
 import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -80,7 +80,7 @@ export class AddPlacePage {
             const path = imageData.replace(/[^\/]*$/, '');
             const newFileName = new Date().getUTCMilliseconds() + '.jpg';
             this.file.moveFile(path, currentName, cordova.file.dataDirectory, newFileName)
-                .then((data:FileEntry) => {
+                .then((data:Entry) => {
                     this.imageUrl = data.nativeURL;
                     this.camera.cleanup();
                     //this.file.removeFile(path, currentName)
