@@ -10,7 +10,7 @@ export class PlacesService {
     }
 
     deletePlace (index:number) {
-        this.places.slice(index, 1);
+        this.places.splice(index, 1);
     }
 
     loadPlaces () {
