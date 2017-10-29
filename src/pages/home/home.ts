@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ModalController } from 'ionic-angular';
 
@@ -13,13 +13,17 @@ import { PlacesService } from '../../services/places';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   public addPlacePage = AddPlacePage;
   public places:Place[];
 
   constructor(private placesService:PlacesService,
               private modalController:ModalController) {}
+
+  ngOnInit () {
+      this.placesService.fetchPlaces();
+  }
 
   ionViewWillEnter () {
       this.places = this.placesService.loadPlaces();
