@@ -22,7 +22,10 @@ export class HomePage implements OnInit {
               private modalController:ModalController) {}
 
   ngOnInit () {
-      this.placesService.fetchPlaces();
+      this.placesService.fetchPlaces()
+          .then((places:Place[]) => {
+            this.places = places;
+          });
   }
 
   ionViewWillEnter () {
